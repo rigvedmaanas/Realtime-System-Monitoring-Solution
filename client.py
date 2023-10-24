@@ -36,13 +36,7 @@ system_number = 5
 
 # Paths to exclude in mac
 exclude_paths = [
-    "/private",
-    "/Users/rigvedmaanas/Library",
-    "/Users/rigvedmaanas/Library/Preferences",
-    "/Users/rigvedmaanas/Library/Logs",
-    "/Users/rigvedmaanas/Library/Application Support/BraveSoftware",
-    "/Library/Preferences/",
-    "/Library/Caches/"
+    ""
 ]
 
 #exclude_paths = []
@@ -201,14 +195,14 @@ def func():
         while True:
             if share_screen != False:
 
-                """with mss.mss() as sct:
+                with mss.mss() as sct:
                     sct_img = sct.grab(bounding_box)
                 img = Image.frombytes(
                     'RGB',
                     (sct_img.width, sct_img.height),
                     sct_img.rgb,
-                )"""
-                img = Image.open(resource_path(f"OS/OS{system_number}.png"))
+                )
+                #img = Image.open(resource_path(f"OS/OS{system_number}.png"))
 
                 img = img.resize((basewidth, hsize), Image.Resampling.LANCZOS)
                 img2 = cv2.putText(np.array(img), f"Computer {system_number}", (0, hsize-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
