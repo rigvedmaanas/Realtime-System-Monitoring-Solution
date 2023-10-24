@@ -1,0 +1,9 @@
+opencv-python~=4.8.0.76
+numpy~=1.25.2
+Pillow~=10.0.0
+darkdetect~=0.8.0
+customtkinter~=5.2.0
+zfec~=1.5.7.2
+setuptools~=65.5.1
+mss~=9.0.1
+watchdog~=3.0.0
