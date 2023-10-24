@@ -60,9 +60,13 @@ The implementation of artificial intelligence (AI) for real-time activity analys
 # Conclusion
 In its current form, the system showcased here operates on a local host, with both the client (student) and the server (teacher) running on the same system. However, it's important to note that the system's architecture is flexible and scalable. It has the potential to be expanded for implementation in scenarios where the server and client are separate systems or connected to different networks.
 
+#### Me with my friend Devanandhan during the competition
+![Me with my friend Devanandhan during the competition](https://github.com/rigvedmaanas/Realtime-System-Monitoring-Solution/assets/77579661/369b1e08-bced-4fe7-a0ff-1b5b7a94739f)
+
+
 ***
 
-Note: This project was made for the Science Exhibition in Kerala and got A grade in Sub-district level (Aluva). The description given above is from te project report
+Note: This project was made for the Science Exhibition in Kerala and got A grade in Sub-district level (Aluva). The description given above is from the project report.
 
 # How to run this program
 
