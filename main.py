@@ -29,7 +29,6 @@ def disconnected_check():
     while True:
 
         for computer in list(ComputerManager.computers.keys()):
-            #print(time.time()-ComputerManager.computers[computer].last_image)
             if ComputerManager.computers[computer].last_image == None:
                 pass
             elif time.time() - ComputerManager.computers[computer].last_image > 5:
@@ -37,11 +36,6 @@ def disconnected_check():
                 ComputerManager.computers[computer].display.configure(text="Disconnected")
                 ComputerManager.computers[computer].last_image = None
 
-                #e = None
-                #ComputerManager.computers[computer].display.bind("<Button-1>", lambda e=e, computer=computer: change_properties_only(computer))
-                #ComputerManager.computers.pop(computer)
-                #reset(ComputerManager.computers)
-                #break
 
         time.sleep(10)
 
@@ -80,7 +74,6 @@ def receiver():
                     callback_show(slide_menu.current_frame)
                     check = True
                     break
-                #print(ComputerManager.computers[key].name, data2.decode("utf-8"))
             if check == False:
                 FrameController.add_frame(addr, data2)
                 val2 = ComputerManager.check_with_addr(addr)
@@ -93,24 +86,18 @@ def receiver():
 
 
         else:
-            #img = pickle.loads(data)
+   
             img = val.add_byte(data)
 
-            #data2 = cv2.imdecode(img, cv2.IMREAD_COLOR)
             if img != None:
-
-
-                #RGB_img = cv2.cvtColor(data2, cv2.COLOR_BGR2RGB)
-                #im_pil = Image.fromarray(data2)
                 width, height = img.size
-                #width = 300
                 im_pil = img
                 if width == 800 and DISCONNECTED == False:
-                #print(width, height)
+              
                     photo = ImageTk.PhotoImage(im_pil)
                     FullScreenDisplay.configure(image=photo)
                     FullScreenDisplay.image = photo
-                    #val.display.configure(image=None)
+                    
                     val.display.configure(text="Opened in Full Screen")
                 else:
                     photo = ImageTk.PhotoImage(im_pil)
@@ -123,12 +110,6 @@ def receiver():
 
 
 
-        """
-        if (cv2.waitKey(1) & 0xFF) == ord('q'):
-            cv2.destroyAllWindows()
-            break
-        """
-
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -137,7 +118,7 @@ s.bind(("0.0.0.0", 7387))
 
 message = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 message.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 200000)
-#message.bind(("127.0.0.1", 7487))
+
 
 def recieve_logging():
     time.sleep(3)
@@ -183,9 +164,7 @@ class DisplayWidgetControl:
         self.max_frame_per_slide = max_frame_per_slide
 
         self.num_slide = 1
-        #self.current_slide = self.slide_view.create_tab()
-        #self.fake_display_frame = CTkFrame(self.current_slide, fg_color="transparent")  # For centering the displayed video frames
-        #self.fake_display_frame.place(anchor="center", relx=0.5, rely=0.5)
+
 
     def add_frame(self, addr, name):
 
@@ -201,7 +180,6 @@ class DisplayWidgetControl:
 
         display = CTkLabel(frame, text="")
         display.place(relx=0.5, rely=0.5, anchor=CENTER)
-        #print(self.num, self.max_frame_per_slide, self.num%(self.max_frame_per_slide-1))
         id = ComputerManager.add(IP=addr, frame=frame, display=display, name=name)
         e = None
         display.bind("<Button-1>", lambda e=e, id=id: change_properties(id))
@@ -216,9 +194,9 @@ class Computer_Manager:
         self.id = 0
     def add(self, **kwargs):
 
-        #print(kwargs)
+  
         self.computers[kwargs["IP"]] = Computer(self.id, **kwargs)
-        #print(self.computers)
+
         self.id += 1
         return kwargs["IP"]
     def check_with_addr(self, addr):
@@ -253,7 +231,7 @@ class Computer:
                 blocknums = tuple(range(15))
 
                 decoded_data = decoder.decode(self.bytes, blocknums)
-                #r_data = "".join(chr(int(decoded_data[i:i + 2], 16)) for i in range(0, len(decoded_data), 2))
+                
 
                 v = numpy.frombuffer(b"".join(decoded_data), numpy.uint8)
 
@@ -318,7 +296,7 @@ ComputerManager = Computer_Manager()
 
 def callback_show(tab):
     global ComputerManager
-    #print(tab, ComputerManager.computers)
+    
     keys = ComputerManager.computers.keys()
 
     for key in list(keys):
@@ -354,29 +332,6 @@ FullScreenDisplay.place(relx=0.5, rely=0.5, anchor=CENTER)
 FrameController = DisplayWidgetControl(slide_menu, 4)
 
 
-"""
-first_menu = slide_menu.create_tab()
-first_menu.configure(fg_color="transparent")
-fake_display_frame = CTkFrame(first_menu, fg_color="transparent") # For centering the displayed video frames
-fake_display_frame.place(anchor="center", relx=0.5, rely=0.5)
-"""
-
-"""
-### Creating row for the computers
-fake_display_frame = CTkFrame(display_frame, fg_color="transparent") # For centering the displayed video frames
-fake_display_frame.place(anchor="center", relx=0.5, rely=0.5)
-
-
-for y in range(5):
-    for x in range(4):
-        frame = CTkFrame(fake_display_frame, width=200, height=125, fg_color="grey10")
-        frame.grid(row=x, column=y, padx=10, pady=10)
-        id = ComputerManager.add(IP="127.0.0.1", frame=frame)
-
-        frame.bind("<Button-1>", lambda e, id=id: change_properties(id))
-"""
-
-
 
 properties_frame = CTkFrame(root)
 properties_frame.pack(side="right", padx=(0, 20), pady=20, fill="both", expand=True)
@@ -384,7 +339,7 @@ properties_frame.pack(side="right", padx=(0, 20), pady=20, fill="both", expand=T
 
 Inspector = InspectorWidget(properties_frame, width=640)
 Inspector.pack(fill="both", side="right", expand=True, padx=10, pady=10)
-#Inspector.add_option(display_text="Computer", options={"_id": f"App", "_widget": None, "IP": "127.0.0.1"}, callback=print)
+
 
 
 disconnector = threading.Thread(target=disconnected_check)
