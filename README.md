@@ -32,6 +32,9 @@ With these functionalities, our system provides an effective and specialized sol
 # How the client (student) and the server (teacher) communicate.
   
 ## Output
+
+![Realtime system monitoring solution](https://github.com/rigvedmaanas/Realtime-System-Monitoring-Solution/assets/77579661/388a71db-1b7e-4d96-b037-31508b7cd8f9)
+
 ### Server (teacher) side
 On the teacher's side, the system allows the teacher to view the screens of all connected students in real-time. It also includes a direct messaging capability, enabling teachers to communicate directly with students from their computer, thus facilitating immediate guidance and support. Additionally, the teacher has the capability to select individual student computers and access log files that provide a comprehensive record of all file system changes made by each respective student.
 ### Client (student) side
@@ -74,3 +77,13 @@ Note: This project was made for the Science Exhibition in Kerala and got A grade
  - setuptools~=65.5.1
  - mss~=9.0.1
  - watchdog~=3.0.0
+
+## To install the required dependencies
+
+```
+pip3 install -r requirement.txt
+```
+
+## Change the IP in `main.py` `client.py`
+## Run `main.py` in the teacher's computer
+## Run `client.py` in the student's computer
