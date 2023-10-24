@@ -66,7 +66,7 @@ In its current form, the system showcased here operates on a local host, with bo
 
 ***
 
-Note: This project was made for the Science Exhibition in Kerala and got A grade in Sub-district level (Aluva). The description given above is from the project report.
+Note: This project was made for the Science Fair in Kerala and got A grade in Sub-district level (Aluva). The description given above is from the project report.
 
 # How to run this program
 
