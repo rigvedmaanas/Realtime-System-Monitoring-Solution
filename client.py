@@ -133,14 +133,9 @@ s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 200000)
 
 message = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 message.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 10000)
-port = None
-with open(resource_path("openport.txt"), "r") as f:
-    port = int(f.read())
 
-with open(resource_path("openport.txt"), "w") as f:
-    f.write(str(port+1))
 
-message.bind(("127.0.0.1", port))
+message.bind(("127.0.0.1", 4000))
 
 s.sendto(str(port).encode("utf-8"), ("127.0.0.1", 7387))
 s.sendto(f"Computer {system_number}".encode("utf-8"), ("127.0.0.1", 7387))
