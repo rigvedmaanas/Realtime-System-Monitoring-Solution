@@ -118,7 +118,7 @@ s.bind(("0.0.0.0", 7387))
 
 message = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 message.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 200000)
-
+message.bind(("0.0.0.0", 4000))
 
 def recieve_logging():
     time.sleep(3)
